@@ -34,8 +34,8 @@ img{max-width:100%;display:block}
   radial-gradient(520px 300px at 88% 30%,rgba(20,194,178,.08),transparent 65%),
   radial-gradient(640px 340px at 50% 108%,rgba(225,6,0,.07),transparent 65%)}
 .hero .wrap{position:relative}
-.hero-logo{display:block;margin:0 auto 20px;width:92px;height:92px;
-  filter:drop-shadow(0 8px 30px rgba(201,154,75,.35))}
+.hero-logo{display:block;margin:0 auto 22px;width:182px;height:auto;
+  filter:drop-shadow(0 10px 34px rgba(201,154,75,.3))}
 .kicker{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
   color:var(--gold);border:1px solid rgba(201,154,75,.35);border-radius:999px;padding:6px 14px;margin-bottom:22px}
 h1.hero-title{font-size:clamp(38px,6vw,64px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
