@@ -1,7 +1,7 @@
-/* Barean — shared styles */
+/* Berean — shared styles */
 :root{
   --bg:#0b0d12;--surface:#12151d;--card:#161a24;--line:rgba(255,255,255,.08);
-  --text:#eef1f6;--muted:#9aa3b2;
+  --text:#eef1f6;--muted:#9aa3b2;--gold:#c99a4b;--gold-light:#edcb7c;
   --caduceus:#6d8dff;--crown:#14c2b2;--apex:#e10600;
   --radius:18px;
 }
@@ -19,21 +19,25 @@ img{max-width:100%;display:block}
 /* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   background:rgba(11,13,18,.72);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+@media(max-width:420px){.nav-links{gap:14px;font-size:13px}}
 .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:.3px}
-.brand svg{display:block}
+.brand svg,.brand img{display:block}
 .nav-links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
 .nav-links a:hover{color:var(--text)}
 
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;padding:110px 0 90px;text-align:center}
 .hero .glow{position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(560px 300px at 18% 0%,rgba(109,141,255,.16),transparent 65%),
-  radial-gradient(520px 300px at 82% 8%,rgba(20,194,178,.13),transparent 65%),
-  radial-gradient(640px 340px at 50% 108%,rgba(225,6,0,.10),transparent 65%)}
+  radial-gradient(640px 360px at 50% -5%,rgba(201,154,75,.22),transparent 65%),
+  radial-gradient(560px 300px at 12% 30%,rgba(109,141,255,.10),transparent 65%),
+  radial-gradient(520px 300px at 88% 30%,rgba(20,194,178,.08),transparent 65%),
+  radial-gradient(640px 340px at 50% 108%,rgba(225,6,0,.07),transparent 65%)}
 .hero .wrap{position:relative}
+.hero-logo{display:block;margin:0 auto 20px;width:92px;height:92px;
+  filter:drop-shadow(0 8px 30px rgba(201,154,75,.35))}
 .kicker{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 14px;margin-bottom:22px}
+  color:var(--gold);border:1px solid rgba(201,154,75,.35);border-radius:999px;padding:6px 14px;margin-bottom:22px}
 h1.hero-title{font-size:clamp(38px,6vw,64px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
 @media(max-width:640px){h1.hero-title br{display:none}}
 .hero-sub{max-width:560px;margin:20px auto 0;color:var(--muted);font-size:18px}
