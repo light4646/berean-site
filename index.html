@@ -31,10 +31,11 @@
 
 <header class="hero">
   <div class="glow"></div>
+  <div class="aurora"><i class="au-gold"></i><i class="au-blue"></i><i class="au-teal"></i></div>
   <div class="wrap">
     <img class="hero-logo" src="assets/berean-logo.png" alt="Berean logo" width="182" height="210">
     <span class="kicker">New York</span>
-    <h1 class="hero-title">Study apps that<br> keep you accountable.</h1>
+    <h1 class="hero-title">Study apps that<br> keep you <span class="grad-gold">accountable.</span></h1>
     <p class="hero-sub">We build focused, competitive tools for people preparing for the hardest exams of their lives — and for anyone who wants their study hours to count.</p>
   </div>
 </header>
@@ -44,7 +45,7 @@
     <div class="wrap">
       <div class="apps-grid">
 
-        <article class="app-card c-caduceus">
+        <article class="app-card c-caduceus reveal">
           <img class="app-icon" src="assets/caduceus.png" alt="Caduceus app icon" width="76" height="76">
           <div>
             <div class="app-tag">MCAT</div>
@@ -58,7 +59,7 @@
           </div>
         </article>
 
-        <article class="app-card c-crown">
+        <article class="app-card c-crown reveal">
           <img class="app-icon" src="assets/crown.png" alt="Crown app icon" width="76" height="76">
           <div>
             <div class="app-tag">DAT</div>
@@ -72,7 +73,7 @@
           </div>
         </article>
 
-        <article class="app-card c-apex">
+        <article class="app-card c-apex reveal">
           <img class="app-icon" src="assets/apex.png" alt="Apex app icon" width="76" height="76">
           <div>
             <div class="app-tag">Focus</div>
@@ -91,14 +92,14 @@
   </section>
 
   <section class="section" id="about">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2>Built by students, for students.</h2>
       <p>Berean started with a simple observation: studying for the MCAT, the DAT, or any make-or-break exam is lonely, and lonely is easy to quit. Our apps turn preparation into something you can see, measure, and compete on — so showing up every day stops being a matter of willpower.</p>
     </div>
   </section>
 
   <section class="section" id="contact">
-    <div class="wrap">
+    <div class="wrap reveal">
       <h2>Get in touch</h2>
       <p>Questions, support, or anything else — email us at <a class="inline" href="mailto:admin@yourberean.com">admin@yourberean.com</a>. We aim to reply within 2–3 business days.</p>
     </div>
@@ -146,6 +147,25 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var els=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  if(!els.length||!('IntersectionObserver' in window))return;
+  // probe: only enable hide-then-reveal once we see IO actually deliver callbacks
+  var probe=new IntersectionObserver(function(){probe.disconnect();enable()});
+  probe.observe(document.body);
+  function enable(){
+    document.documentElement.classList.add('js-anim');
+    requestAnimationFrame(function(){
+      var io=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+      })},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+      els.forEach(function(el){io.observe(el)});
+    });
+  }
+})();
+</script>
 
 </body>
 </html>

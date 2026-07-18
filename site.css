@@ -29,17 +29,39 @@ img{max-width:100%;display:block}
 /* ---------- hero ---------- */
 .hero{position:relative;overflow:hidden;padding:110px 0 90px;text-align:center}
 .hero .glow{position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(640px 360px at 50% -5%,rgba(201,154,75,.22),transparent 65%),
-  radial-gradient(560px 300px at 12% 30%,rgba(109,141,255,.10),transparent 65%),
-  radial-gradient(520px 300px at 88% 30%,rgba(20,194,178,.08),transparent 65%),
-  radial-gradient(640px 340px at 50% 108%,rgba(225,6,0,.07),transparent 65%)}
+  radial-gradient(640px 360px at 50% -5%,rgba(201,154,75,.20),transparent 65%),
+  radial-gradient(640px 340px at 50% 108%,rgba(225,6,0,.06),transparent 65%)}
+.aurora{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.aurora i{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
+.aurora .au-gold{width:560px;height:440px;left:50%;top:-6%;margin-left:-280px;
+  background:radial-gradient(closest-side,rgba(201,154,75,.30),transparent 70%);animation:auroraA 14s ease-in-out infinite}
+.aurora .au-blue{width:480px;height:380px;left:-10%;top:26%;
+  background:radial-gradient(closest-side,rgba(109,141,255,.16),transparent 70%);animation:auroraB 19s ease-in-out infinite}
+.aurora .au-teal{width:440px;height:360px;right:-8%;top:34%;
+  background:radial-gradient(closest-side,rgba(20,194,178,.13),transparent 70%);animation:auroraC 23s ease-in-out infinite}
+@keyframes auroraA{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,46px,0)}}
+@keyframes auroraB{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(76px,-32px,0)}}
+@keyframes auroraC{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-64px,34px,0)}}
 .hero .wrap{position:relative}
 .hero-logo{display:block;margin:0 auto 22px;width:182px;height:auto;
-  filter:drop-shadow(0 10px 34px rgba(201,154,75,.3))}
+  filter:drop-shadow(0 14px 40px rgba(201,154,75,.35));
+  animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.hero .wrap>*{opacity:0;animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) forwards}
+.hero .wrap>:nth-child(1){animation-delay:.05s}
+.hero .wrap>:nth-child(2){animation-delay:.2s}
+.hero .wrap>:nth-child(3){animation-delay:.32s}
+.hero .wrap>:nth-child(4){animation-delay:.46s}
+.hero-logo{animation:fadeUp .9s cubic-bezier(.2,.7,.2,1) .05s forwards,floaty 7s ease-in-out 1.1s infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
 .kicker{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
   color:var(--gold);border:1px solid rgba(201,154,75,.35);border-radius:999px;padding:6px 14px;margin-bottom:22px}
 h1.hero-title{font-size:clamp(38px,6vw,64px);line-height:1.08;font-weight:800;letter-spacing:-.02em}
 @media(max-width:640px){h1.hero-title br{display:none}}
+.grad-gold{background:linear-gradient(100deg,#edcb7c 0%,#c99a4b 38%,#f6e3ad 50%,#c99a4b 62%,#edcb7c 100%);
+  background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 6.5s linear infinite}
+@keyframes shimmer{to{background-position:-220% center}}
 .hero-sub{max-width:560px;margin:20px auto 0;color:var(--muted);font-size:18px}
 
 /* ---------- app cards ---------- */
@@ -47,9 +69,15 @@ h1.hero-title{font-size:clamp(38px,6vw,64px);line-height:1.08;font-weight:800;le
 .apps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media(max-width:840px){.apps-grid{grid-template-columns:1fr}}
 .app-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
-  padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .18s ease,border-color .18s ease}
-.app-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.16)}
-.app-icon{width:76px;height:76px;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.45)}
+  padding:28px;display:flex;flex-direction:column;gap:14px;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.app-card:hover{transform:translateY(-5px)}
+.app-card.c-caduceus:hover{border-color:rgba(109,141,255,.45);box-shadow:0 22px 48px -20px rgba(109,141,255,.4)}
+.app-card.c-crown:hover{border-color:rgba(20,194,178,.45);box-shadow:0 22px 48px -20px rgba(20,194,178,.4)}
+.app-card.c-apex:hover{border-color:rgba(255,69,58,.45);box-shadow:0 22px 48px -20px rgba(225,6,0,.4)}
+.app-icon{width:76px;height:76px;border-radius:18px;overflow:hidden;box-shadow:0 10px 28px rgba(0,0,0,.45);
+  transition:transform .25s ease}
+.app-card:hover .app-icon{transform:translateY(-4px) scale(1.05) rotate(-2deg)}
 .app-name{font-size:21px;font-weight:700;margin-top:4px}
 .app-tag{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
 .app-card.c-caduceus .app-tag{color:var(--caduceus)}
@@ -58,8 +86,9 @@ h1.hero-title{font-size:clamp(38px,6vw,64px);line-height:1.08;font-weight:800;le
 .app-desc{color:var(--muted);font-size:15px;flex:1}
 .app-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .btn{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
-  padding:9px 16px;border-radius:999px;border:1px solid var(--line);color:var(--text);transition:background .15s}
-.btn:hover{background:rgba(255,255,255,.06)}
+  padding:9px 16px;border-radius:999px;border:1px solid var(--line);color:var(--text);
+  transition:background .15s,transform .15s}
+.btn:hover{background:rgba(255,255,255,.06);transform:translateY(-1px)}
 .btn.primary{background:#fff;color:#0b0d12;border-color:#fff}
 .btn.primary:hover{background:#e8eaf0}
 
@@ -79,6 +108,18 @@ footer{border-top:1px solid var(--line);padding:44px 0 60px;font-size:14px;color
 .foot-grid a:hover{color:var(--text)}
 .foot-bottom{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);
   display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px}
+
+/* ---------- scroll reveal (hiding only enabled once JS proves IO works) ---------- */
+html.js-anim .reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+html.js-anim .reveal.in{opacity:1;transform:translateY(0)}
+html.js-anim .apps-grid>.reveal:nth-child(2){transition-delay:.12s}
+html.js-anim .apps-grid>.reveal:nth-child(3){transition-delay:.24s}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.hero .wrap>*{opacity:1!important;transform:none!important}
+}
 
 /* ================= legal pages ================= */
 body.legal{background:#fff;color:#141821}
